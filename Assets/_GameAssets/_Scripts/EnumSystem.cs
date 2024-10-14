@@ -9,3 +9,11 @@ public enum PrimitiveDataType
     Bool,
     None
 }
+
+[Serializable]
+public enum Axis
+{
+    X,
+    Y,
+    Z
+}
