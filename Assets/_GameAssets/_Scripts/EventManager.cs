@@ -18,4 +18,17 @@ public static class EventManager
     /// Nghĩa cuả biến là: startPosition, previousPosition, currentPosition
     /// </summary>
     public static Action<Vector2, Vector2, Vector2> onDrag;
+
+    public static Action<int, ObjectSimulationType> selectedObject;
+
+    public static Func<int> defaultSelectedObjectIndex;
+
+    public static Func<ObjectSimulationType> selectedObjectType;
+
+    #region InGame
+
+    public static Action<int> selectedObjectInGame;
+    public static Action<int> selectedBackgroundInGame;
+
+    #endregion
 }

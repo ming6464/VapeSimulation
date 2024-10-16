@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -9,11 +8,9 @@ namespace ComponentUtilitys
     {
         [Tab("Base")]
         [SerializeField]
-        protected bool _addEventOnCode;
-        [SerializeField,ShowIf("_addEventOnCode",true)]
         protected Button _button;
     
-        [SerializeField, ShowIf("_addEventOnCode", true), Variants("One Way", "Two Way")]
+        [SerializeField, Variants("One Way", "Two Way")]
         protected string _buttonTypeWay;
     
         protected bool _currentState;
@@ -22,7 +19,7 @@ namespace ComponentUtilitys
     
         private void OnValidate()
         {
-            if (_addEventOnCode && !_button)
+            if (!_button)
             {
                 _button = GetComponent<Button>();
             }
@@ -30,31 +27,25 @@ namespace ComponentUtilitys
     
         protected virtual void OnEnable()
         {
-            if (_addEventOnCode)
+            if (_buttonTypeWay.Equals("One Way"))
             {
-                if (_buttonTypeWay.Equals("One Way"))
-                {
-                    _button.onClick.AddListener(OnClick);
-                }
-                else
-                {
-                    _button.onClick.AddListener(OnAddActionChangeValue);
-                }
+                _button.onClick.AddListener(OnClick);
+            }
+            else
+            {
+                _button.onClick.AddListener(OnAddActionChangeValue);
             }
         }
     
         private void OnDisable()
         {
-            if (_addEventOnCode)
+            if (_buttonTypeWay.Equals("One Way"))
             {
-                if (_buttonTypeWay.Equals("One Way"))
-                {
-                    _button.onClick.RemoveListener(OnClick);
-                }
-                else
-                {
-                    _button.onClick.RemoveListener(OnAddActionChangeValue);
-                }
+                _button.onClick.RemoveListener(OnClick);
+            }
+            else
+            {
+                _button.onClick.RemoveListener(OnAddActionChangeValue);
             }
         }
     

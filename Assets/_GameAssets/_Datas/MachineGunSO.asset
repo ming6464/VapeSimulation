@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d7e9b6cee14d58a2d885384790b169, type: 3}
+  m_Name: MachineGunSO
+  m_EditorClassIdentifier: 
+  machineData:
+  - icon: {fileID: 21300000, guid: f9cc6b22ace71484097dbbfc5396d00a, type: 2}
+    prefab: {fileID: 8124194695415038388, guid: 21589d779029ba34696902f918c5d14c,
+      type: 3}
+    capacity: 1
+    cooldown: 2
+    auto: 1
+    burst: 0
+  - icon: {fileID: 21300000, guid: cb895bfa44b4cbd49a47e4813412cd65, type: 2}
+    prefab: {fileID: 3729153524681017610, guid: ff392dc92ffe0714dbf52cfd5f09bb08,
+      type: 3}
+    capacity: 3
+    cooldown: 4
+    auto: 0
+    burst: 1
+  - icon: {fileID: 21300000, guid: 1b5bf3c7142ea8b499747d1483a28203, type: 2}
+    prefab: {fileID: 2194112783273301663, guid: 8800eaf5338f6574db833cdcb3c35656,
+      type: 3}
+    capacity: 5
+    cooldown: 6
+    auto: 0
+    burst: 0

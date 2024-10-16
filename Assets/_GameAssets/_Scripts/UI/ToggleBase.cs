@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using VInspector;
@@ -9,8 +8,6 @@ namespace ComponentUtilitys
     {
         [Tab("Base")]
         [SerializeField]
-        protected bool _addEventOnCode;
-        [SerializeField,ShowIf("_addEventOnCode",true)]
         protected Toggle _toggle;
 
         [EndIf]
@@ -18,7 +15,7 @@ namespace ComponentUtilitys
 
         private void OnValidate()
         {
-            if (_addEventOnCode && !_toggle)
+            if (!_toggle)
             {
                 _toggle = GetComponent<Toggle>();
             }
@@ -26,18 +23,12 @@ namespace ComponentUtilitys
 
         protected virtual void OnEnable()
         {
-            if (_addEventOnCode)
-            {
-                _toggle.onValueChanged.AddListener(value => OnChangeValue(value));
-            }
+            _toggle.onValueChanged.AddListener(OnChangeValue);
         }
 
         protected virtual void OnDisable()
         {
-            if (_addEventOnCode)
-            {
-                _toggle.onValueChanged.RemoveListener(value => OnChangeValue(value));
-            }
+            _toggle.onValueChanged.RemoveListener(OnChangeValue);
         }
 
         public abstract void OnChangeValue<T>(T value);

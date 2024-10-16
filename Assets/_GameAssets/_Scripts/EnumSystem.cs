@@ -17,3 +17,12 @@ public enum Axis
     Y,
     Z
 }
+
+[Serializable]
+public enum ObjectSimulationType
+{
+    VapeAndPod,
+    MachineGun,
+    ScifiGun,
+    LightSaber,
+}
