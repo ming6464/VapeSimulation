@@ -5,8 +5,6 @@ namespace _GameAssets._Scripts
     public class GameState : Singleton<GameState>
     {
         #region Properties
-        
-        //private
         private int _objectSelectedIndex;
         private ObjectSimulationType _objectSimulationType;
 
@@ -20,16 +18,32 @@ namespace _GameAssets._Scripts
             _objectSelectedIndex = objectSelectedIndex;
             _objectSimulationType = objectSimulationType;
             //
-            EventManager.selectedObject += SetObjectSelectedIndex;
-            EventManager.selectedObjectType += SetObjectSimulationType;
-            EventManager.defaultSelectedObjectIndex += GetObjectSelectedIndex;
+            EventManager.selectedObject         += SetObjectSelected;
+            EventManager.selectedObjectIndex    += SetObjectSelectedIndex;
+            EventManager.selectedObjectType     += SetObjectSimulationType;
+            EventManager.getSelectedObjectIndex += GetObjectSelectedIndex;
+            EventManager.getSelectedObjectType  += SetObjectSimulationType;
         }
-        
+
+       
+
         private void OnDestroy()
         {
-            EventManager.selectedObject -= SetObjectSelectedIndex;
-            EventManager.selectedObjectType -= SetObjectSimulationType;
-            EventManager.defaultSelectedObjectIndex -= GetObjectSelectedIndex;
+            EventManager.selectedObject         -= SetObjectSelected;
+            EventManager.selectedObjectIndex    -= SetObjectSelectedIndex;
+            EventManager.selectedObjectType     -= SetObjectSimulationType;
+            EventManager.getSelectedObjectIndex -= GetObjectSelectedIndex;
+            EventManager.getSelectedObjectType  -= SetObjectSimulationType;
+        }
+        
+        private void SetObjectSimulationType(ObjectSimulationType obj)
+        {
+            _objectSimulationType = obj;
+        }
+
+        private void SetObjectSelectedIndex(int obj)
+        {
+            _objectSelectedIndex = obj;
         }
 
         private ObjectSimulationType SetObjectSimulationType()
@@ -41,9 +55,8 @@ namespace _GameAssets._Scripts
         {
             return _objectSelectedIndex;
         }
-        
 
-        private void SetObjectSelectedIndex(int arg1, ObjectSimulationType arg2)
+        private void SetObjectSelected(int arg1, ObjectSimulationType arg2)
         {
             _objectSelectedIndex = arg1;
             _objectSimulationType = arg2;

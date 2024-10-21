@@ -8,92 +8,57 @@ namespace ComponentUtilitys
     public class ButtonEvent : ButtonBase
     {
             [Tab("Button Event")]
-            [SerializeField, Variants("Unity Event","Event Dispatcher")]
-            private string _actionType;
-            
             //One Way
-            [ShowIf("_actionType", "Unity Event","_buttonTypeWay","One Way")]
             [SerializeField]
-            private UnityEvent _event;
-            [ShowIf("_actionType", "Event Dispatcher","_buttonTypeWay","One Way")]
-            [SerializeField]
-            private DispatcherEventInfo _eventInfo;
+            private EventDataInfo _eventOnInfo;
             //Two Way
-            [ShowIf("_actionType", "Unity Event","_buttonTypeWay","Two Way")]
-            [SerializeField]
-            private UnityEvent _eventOn;
-            [SerializeField]
-            private UnityEvent _eventOff;
-
-            [ShowIf("_actionType", "Event Dispatcher","_buttonTypeWay","Two Way")]
-            [SerializeField]
-            private DispatcherEventInfo _eventOnInfo;
-            [SerializeField]
-            private DispatcherEventInfo _eventOffInfo;
+            [SerializeField,ShowIf("_buttonTypeWay","Two Way")]
+            private EventDataInfo _eventOffInfo;
             [EndIf]
             //
             [EndTab]
             private void HandleEventDispatcher(bool state = false)
             {
-                if (_buttonTypeWay.Equals("Two Way"))
+                var eventAction = _eventOnInfo.dispatcherEventInfo;
+                if (_buttonTypeWay.Equals("Two Way") && !state)
                 {
-                    if (state)
-                    {
-                        _eventOnInfo.PostEvent();
-                    }
-                    else
-                    {
-                        _eventOffInfo.PostEvent();
-                    }
-                    return;
+                    eventAction = _eventOffInfo.dispatcherEventInfo;
                 }
 
-                _eventInfo.PostEvent();
+                eventAction.PostEvent();
                 
             }
         
             private void HandleEventUnity(bool state = false)
             {
-                var eventAction = _event;
+                var eventAction = _eventOnInfo.unityEvent;
 
-                if (_buttonTypeWay.Equals("Two Way"))
+                if (_buttonTypeWay.Equals("Two Way") && !state)
                 {
-                    eventAction = state ? _eventOn : _eventOff;
+                    eventAction = _eventOffInfo.unityEvent;
                 }
                 eventAction?.Invoke();
             }
 
             public override void OnClick()
             {
-                if (_actionType.Equals("Unity Event"))
-                {
-                    HandleEventUnity();
-                }
-                else
-                {
-                    HandleEventDispatcher();
-                }
+                HandleEventUnity();
+                HandleEventDispatcher();
             }
 
             public override void OnChangeValue<T>(T value)
             {
                 if (value is not bool boolValue) return;
-                if (_actionType.Equals("Unity Event"))
-                {
-                    HandleEventUnity(boolValue);
-                }
-                else
-                {
-                    HandleEventDispatcher(boolValue);
-                }
+                HandleEventUnity(boolValue);
+                HandleEventDispatcher(boolValue);
             }
+    }
 
-            public void OnSetValue(bool state)
-            {
-                _currentState = state;
-                OnChangeValue(_currentState);
-            }
-        
+    [Serializable]
+    public struct EventDataInfo
+    {
+        public DispatcherEventInfo dispatcherEventInfo;
+        public UnityEvent unityEvent;
     }
 
 

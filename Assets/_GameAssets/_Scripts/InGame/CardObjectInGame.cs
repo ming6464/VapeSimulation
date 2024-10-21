@@ -1,11 +1,9 @@
+using ComponentUtilitys;
 
-namespace ComponentUtilitys
+public class CardObjectInGame : CardBase
 {
-    public class CardObjectInGame : CardBase
+    public override void OnClick()
     {
-        public override void OnClick()
-        {
-            EventManager.selectedObjectInGame?.Invoke(_cardID);
-        }
+        EventManager.selectedObjectIndex?.Invoke(_cardID);
     }
 }

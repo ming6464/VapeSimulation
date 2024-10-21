@@ -40,7 +40,6 @@ namespace ComponentUtilitys
             
         }
         
-
         private void CalculateScreenSize()
         {
             var screenHeightCalculate = 0f;
@@ -61,37 +60,28 @@ namespace ComponentUtilitys
             _screenCalculate = new Vector2(screenWidthCalculate, screenHeightCalculate);
         }
 
-        protected virtual void ApplySpriteResolution(ImageInfo imageInfo)
+        public virtual void ApplySpriteResolution(ImageInfo imageInfo)
         {
             if(!_image)
                 return;
-            var width                 = 0f;
-            var height                = 0f;
-            var screenHeightCalculate = _screenCalculate.y;
-            var screenWidthCalculate  = _screenCalculate.x;
-            
-            var resolution = imageInfo.resolution;
-            var sprite     = imageInfo.sprite;
-            
-            var subtractW = screenWidthCalculate - resolution.x;
-            var subtractH = screenHeightCalculate - resolution.y;
-    
-            if (subtractW > subtractH)
+            var ratioX = imageInfo.resolution.x / _screenCalculate.x;
+            var ratioY = imageInfo.resolution.y / _screenCalculate.y;
+            float width = 0;
+            float height = 0;
+            if (ratioX < ratioY)
             {
-                width = screenWidthCalculate;
-                var ratio = width / resolution.x;
-                height = resolution.y * ratio;
+                width = _screenCalculate.x;
+                height = imageInfo.resolution.y / ratioX;
             }
             else
             {
-                height = screenHeightCalculate;
-                var ratio = height / resolution.y;
-                width = resolution.x * ratio;
+                height = _screenCalculate.y;
+                width = imageInfo.resolution.x / ratioY;
             }
-    
             _imageRtf.sizeDelta = new Vector2(width, height);
-            _image.sprite       = sprite;
+            _image.sprite = imageInfo.sprite;
         }
+        
     }
 
     [Serializable]

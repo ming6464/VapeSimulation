@@ -1,12 +1,9 @@
-using UnityEngine;
+using ComponentUtilitys;
 
-namespace ComponentUtilitys
+public class CardBackgroundInGame : CardBase
 {
-    public class CardBackgroundInGame : CardBase
+    public override void OnClick()
     {
-        public override void OnClick()
-        {
-            EventManager.selectedBackgroundInGame?.Invoke(_cardID);
-        }
+        EventManager.selectedBackgroundInGame?.Invoke(_cardID);
     }
 }

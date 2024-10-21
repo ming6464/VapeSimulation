@@ -1,12 +1,20 @@
 using System;
 using UnityEngine;
+using VInspector;
 
 namespace _GameAssets._Scripts
 {
     public class SmoothRotationAxis : MonoBehaviour
     {
+        public float speed = 0.1f;
+        public  Vector3[] angleRotate;
+        private int       _index;
+        private bool      _isResetRotate;
+        
+        [Header("----")]
         public Transform target;
         public SmoothRotationAxisData[] datas;
+        private bool _canRotate;
 
         private void OnEnable()
         {
@@ -20,6 +28,7 @@ namespace _GameAssets._Scripts
 
         private void RotateAxis(Vector2 startPosition, Vector2 previousPosition, Vector2 currentPosition)
         {
+            if(!_canRotate) return;
             var delta = currentPosition - previousPosition;
             foreach(var data in datas)
             {
@@ -43,6 +52,41 @@ namespace _GameAssets._Scripts
                     break;
             }
             targetRotate.RotateAround(data.axis, angle);
+        }
+        
+        public void CanRotate(bool value)
+        {
+            _canRotate = value;
+        }
+        
+        [Button]
+        public void ResetRotate()
+        {
+            _isResetRotate = true;
+            _index    = 0;
+        }
+
+        private void CheckAndRotate()
+        {
+            if(!_isResetRotate) return;
+
+            if (target.transform.localRotation == Quaternion.identity || _index >= angleRotate.Length)
+            {
+                _isResetRotate = false;
+                return;
+            }
+
+            var vt = angleRotate[_index];
+            target.transform.localRotation = Quaternion.RotateTowards(target.transform.localRotation, Quaternion.Euler(vt), speed * 10 * Time.deltaTime);
+            if(target.transform.localRotation == Quaternion.Euler(vt))
+            {
+                _index++;
+            }
+        }
+
+        private void Update()
+        {
+            CheckAndRotate();
         }
     }
     

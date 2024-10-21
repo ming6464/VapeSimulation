@@ -180,6 +180,13 @@ public static class EventDispatcherExtension
 public enum EventID
 {
     None = 0,
+    ChangeMode, 
+    RotateMode,
+    ZoomMode,
+    DefaultMode,
+    Shooting,
+    PlaySmokeEffect,
+    Reload
 }
 
 #endregion

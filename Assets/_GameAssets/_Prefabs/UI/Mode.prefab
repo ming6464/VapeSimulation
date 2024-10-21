@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3921047591232864128}
   - component: {fileID: 2141918001273858473}
   - component: {fileID: 513326353847645445}
-  - component: {fileID: 1152693654027742386}
+  - component: {fileID: 7831353598240159318}
+  - component: {fileID: 1789766576451278277}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -122,7 +123,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1152693654027742386
+--- !u!114 &7831353598240159318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,11 +135,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d163ceb7b591f448ce1a46be31eb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addEventOnCode: 1
   _button: {fileID: 513326353847645445}
   _buttonTypeWay: One Way
-  _actionType: Unity Event
-  _event:
+  _eventOnInfo:
+    dispatcherEventInfo:
+      eventID: 0
+      eventValue:
+        valuePostType: 0
+        int: 0
+        float: 0
+        string: 
+        bool: 0
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  _eventOffInfo:
+    dispatcherEventInfo:
+      eventID: 0
+      eventValue:
+        valuePostType: 0
+        int: 0
+        float: 0
+        string: 
+        bool: 0
+    unityEvent:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &1789766576451278277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4823880697901589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2b5db5a93369e439a2106b827031eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventIDCatch: 1
+  _eventValueCompare:
+    valuePostType: 0
+    int: 0
+    float: 0
+    string: 
+    bool: 0
+  _eventTrue:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8567858238243271233}
@@ -153,36 +195,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  _eventInfo:
-    eventID: 0
-    eventValue:
-      valuePostType: 0
-      int: 0
-      float: 0
-      string: 
-      bool: 0
-  _eventOn:
+  _eventFalse:
     m_PersistentCalls:
-      m_Calls: []
-  _eventOff:
-    m_PersistentCalls:
-      m_Calls: []
-  _eventOnInfo:
-    eventID: 0
-    eventValue:
-      valuePostType: 0
-      int: 0
-      float: 0
-      string: 
-      bool: 0
-  _eventOffInfo:
-    eventID: 0
-    eventValue:
-      valuePostType: 0
-      int: 0
-      float: 0
-      string: 
-      bool: 0
+      m_Calls:
+      - m_Target: {fileID: 8567858238243271233}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &948568889680708728
 GameObject:
   m_ObjectHideFlags: 0

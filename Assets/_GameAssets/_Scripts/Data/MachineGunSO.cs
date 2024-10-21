@@ -13,7 +13,7 @@ public class MachineData : ObjectDataBase
     public GameObject prefab;
     [Header("Info")]
     public int   capacity;
-    public float cooldown;
+    public float burstDelay;
     [Header("Mode")]
     public bool auto;
     public bool burst;

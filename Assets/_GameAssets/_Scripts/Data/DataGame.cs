@@ -64,7 +64,7 @@ public class DataGame : Singleton<DataGame>
         if (!_hasData) return default;
         return BackgroundData[index];
     }
-
+    
     #endregion
 
 }

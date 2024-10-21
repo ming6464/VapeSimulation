@@ -4,6 +4,16 @@ using UnityEngine;
 public static class EventManager
 {
     /// <summary>
+    /// Hàm được gọi để kiểm tra xem có sự rung lắc hay không.
+    /// </summary>
+    public static Action onShake;
+    
+    /// <summary>
+    /// Hàm được gọi để kiểm tra xem có sự tương tác của chuột hay không.
+    /// </summary>
+    public static Func<bool> onMouseInteract;
+
+    /// <summary>
     /// Hành động được gọi khi sự kiện thả chuột xảy ra.
     /// </summary>
     public static Action<Vector2> onPointerUp;
@@ -21,14 +31,19 @@ public static class EventManager
 
     public static Action<int, ObjectSimulationType> selectedObject;
 
-    public static Func<int> defaultSelectedObjectIndex;
+    public static Action<ObjectSimulationType> selectedObjectType;
 
-    public static Func<ObjectSimulationType> selectedObjectType;
+    public static Action<int> selectedObjectIndex;
+
+    public static Func<ObjectSimulationType> getSelectedObjectType;
+
+    public static Func<int> getSelectedObjectIndex;
 
     #region InGame
 
-    public static Action<int> selectedObjectInGame;
     public static Action<int> selectedBackgroundInGame;
 
     #endregion
+    
+    
 }

@@ -11,7 +11,9 @@ namespace ComponentUtilitys
         [SerializeField]
         private EventPostValue _eventValueCompare;
         [SerializeField]
-        private UnityEvent _event;
+        private UnityEvent _eventTrue;
+        [SerializeField]
+        private UnityEvent _eventFalse;
         private void OnEnable()
         {
             EventDispatcher.Instance.RegisterListener(_eventIDCatch,OnCatchEvent);
@@ -19,7 +21,6 @@ namespace ComponentUtilitys
 
         private void OnDisable()
         {
-            _event = null;
             EventDispatcher.Instance.RemoveListener(_eventIDCatch,OnCatchEvent);
         }
 
@@ -57,8 +58,16 @@ namespace ComponentUtilitys
                     isCatch = false;
                 }
             }
-            if(!isCatch) return;
-            _event?.Invoke();
+
+            if (isCatch)
+            {
+                _eventTrue?.Invoke();
+            }
+            else
+            {
+                _eventFalse?.Invoke();
+            }
+            
         }
     }
 }
