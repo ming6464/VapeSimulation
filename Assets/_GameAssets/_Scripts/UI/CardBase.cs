@@ -10,13 +10,13 @@ namespace ComponentUtilitys
         
         protected int _cardID;
         
-        public void SetUp(int id, Sprite sprite)
+        public virtual void SetUp(int id, Sprite sprite)
         {
             _cardID = id;
             SetCardImage(sprite);
         }
         
-        protected void SetCardImage(Sprite sprite)
+        protected virtual void SetCardImage(Sprite sprite)
         {
             _cardImage.sprite = sprite;
         }

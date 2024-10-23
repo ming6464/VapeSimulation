@@ -18,11 +18,20 @@ MonoBehaviour:
       type: 3}
     capacity: 30
     burstDelay: 0.3
+    autoDelay: 0.05
     auto: 1
     burst: 1
   - icon: {fileID: 21300000, guid: 3a61046f2ef6b8a498c811067cbc5e83, type: 2}
     prefab: {fileID: 139605536147675745, guid: ce1f026c12dac30438f16d79bda43364, type: 3}
-    capacity: 30
-    burstDelay: 0.2
+    capacity: 40
+    burstDelay: 0.3
+    autoDelay: 0.15
+    auto: 1
+    burst: 1
+  - icon: {fileID: 21300000, guid: 3a61046f2ef6b8a498c811067cbc5e83, type: 2}
+    prefab: {fileID: 139605536147675745, guid: ce1f026c12dac30438f16d79bda43364, type: 3}
+    capacity: 40
+    burstDelay: 0.3
+    autoDelay: 0.15
     auto: 1
     burst: 1

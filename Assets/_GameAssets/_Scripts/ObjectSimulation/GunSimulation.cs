@@ -78,7 +78,6 @@ namespace _GameAssets._Scripts.ObjectSimulation
                 _countShooting = 0;
                  return;
             }
-
             _capacity--;
             _countShooting--;
             
@@ -126,8 +125,8 @@ namespace _GameAssets._Scripts.ObjectSimulation
                 return;
             }
             _countShooting = 1;
-            _delayShooting = 0;
-            PlayShootingAnimation();
+            _delayShooting = _machineData.autoDelay;
+            PlayShootingAnimation("Auto");
         }
         
         private void CheckAndReload()
@@ -175,7 +174,7 @@ namespace _GameAssets._Scripts.ObjectSimulation
             
         }
 
-        private void PlayShootingAnimation()
+        private void PlayShootingAnimation(string check = "")
         {
             if(_delayPlaySmokeEffectCoroutine != null)
             {
@@ -191,6 +190,7 @@ namespace _GameAssets._Scripts.ObjectSimulation
             }
             _isShooting = true;
             PlayAnimation(_shootingNameAnimation);
+            
         }
 
         private IEnumerator DelayShootingNextFrame()

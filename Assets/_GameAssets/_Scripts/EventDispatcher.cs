@@ -186,7 +186,9 @@ public enum EventID
     DefaultMode,
     Shooting,
     PlaySmokeEffect,
-    Reload
+    Reload,
+    GoToObjectMenu,
+    GoToTypeObjectMenu
 }
 
 #endregion

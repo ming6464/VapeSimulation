@@ -54,7 +54,7 @@ namespace ComponentUtilitys
                 }
                 catch (Exception)
                 {
-                    Debug.Log("Ép kiểu lỗi");
+                    Debug.Log("Ép kiểu lỗi" + transform.name + " || parent : " + transform.parent.name);
                     isCatch = false;
                 }
             }

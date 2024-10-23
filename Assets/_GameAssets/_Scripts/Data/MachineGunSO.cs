@@ -14,6 +14,7 @@ public class MachineData : ObjectDataBase
     [Header("Info")]
     public int   capacity;
     public float burstDelay;
+    public float autoDelay;
     [Header("Mode")]
     public bool auto;
     public bool burst;

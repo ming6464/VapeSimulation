@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _GameAssets._Scripts
 {
@@ -12,7 +14,8 @@ namespace _GameAssets._Scripts
         [Header("Test")]
         public int objectSelectedIndex;
         public ObjectSimulationType objectSimulationType;
-
+        public string GAMEPLAYNAME = "GamePlay";
+        
         private void Awake()
         {
             _objectSelectedIndex = objectSelectedIndex;
@@ -23,9 +26,8 @@ namespace _GameAssets._Scripts
             EventManager.selectedObjectType     += SetObjectSimulationType;
             EventManager.getSelectedObjectIndex += GetObjectSelectedIndex;
             EventManager.getSelectedObjectType  += SetObjectSimulationType;
+            EventManager.playGame               += playGame;
         }
-
-       
 
         private void OnDestroy()
         {
@@ -34,8 +36,10 @@ namespace _GameAssets._Scripts
             EventManager.selectedObjectType     -= SetObjectSimulationType;
             EventManager.getSelectedObjectIndex -= GetObjectSelectedIndex;
             EventManager.getSelectedObjectType  -= SetObjectSimulationType;
+            EventManager.playGame               -= playGame;
         }
         
+
         private void SetObjectSimulationType(ObjectSimulationType obj)
         {
             _objectSimulationType = obj;
@@ -44,6 +48,7 @@ namespace _GameAssets._Scripts
         private void SetObjectSelectedIndex(int obj)
         {
             _objectSelectedIndex = obj;
+            EventManager.changeObjectSimulation?.Invoke();
         }
 
         private ObjectSimulationType SetObjectSimulationType()
@@ -61,5 +66,11 @@ namespace _GameAssets._Scripts
             _objectSelectedIndex = arg1;
             _objectSimulationType = arg2;
         }
+        
+        private void playGame()
+        {
+            SceneManager.LoadScene(GAMEPLAYNAME);
+        }
+        
     }
 }

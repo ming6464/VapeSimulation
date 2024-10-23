@@ -13,14 +13,14 @@ public class ObjectSimulationContainer : MonoBehaviour
     private ObjectSimulationType _objectSimulationType;
     private int _selectedObjectIndex;
 
-    private void Awake()
+    private void OnEnable()
     {
-        EventManager.selectedObjectIndex += selectedObjectIndex;
+        EventManager.changeObjectSimulation += changeObjectSimulation;
     }
 
     private void OnDisable()
     {
-        EventManager.selectedObjectIndex -= selectedObjectIndex;
+        EventManager.changeObjectSimulation -= changeObjectSimulation;
     }
 
     private void Start()
@@ -46,10 +46,11 @@ public class ObjectSimulationContainer : MonoBehaviour
         _camera.targetTexture = _renderTexture;
     }
     
-    private void selectedObjectIndex(int obj)
+    private void changeObjectSimulation()
     {
-        if(_selectedObjectIndex == obj) return;
-        _selectedObjectIndex = obj;
+        var index = EventManager.getSelectedObjectIndex();
+        if(_selectedObjectIndex == index) return;
+        _selectedObjectIndex = index;
         ChangeObjectSimulation();
     }
 

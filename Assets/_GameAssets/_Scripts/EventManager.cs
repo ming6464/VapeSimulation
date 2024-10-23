@@ -35,9 +35,15 @@ public static class EventManager
 
     public static Action<int> selectedObjectIndex;
 
+    public static Action changeObjectSimulation;
+
     public static Func<ObjectSimulationType> getSelectedObjectType;
 
     public static Func<int> getSelectedObjectIndex;
+    
+    public static Action playGame;
+
+    public static Action<Action,Action> loadLayer;
 
     #region InGame
 
