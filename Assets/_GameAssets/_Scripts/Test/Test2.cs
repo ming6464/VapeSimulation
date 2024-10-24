@@ -4,14 +4,7 @@ public class Test2 : MonoBehaviour
 {
     private void Start()
     {
-        if(!DataGame.Instance) return;
-        if(DataGame.Instance.MachineData == null) return;
-
-        foreach (var gun in DataGame.Instance.MachineData)
-        {
-            var gunObject = Instantiate(gun.prefab, GetRandomPosition(), Quaternion.identity);
-        }
-        
+        EventManager.goToMenuScene?.Invoke();
     }
 
     private Vector3 GetRandomPosition()

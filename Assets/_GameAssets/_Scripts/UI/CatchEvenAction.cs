@@ -59,13 +59,20 @@ namespace ComponentUtilitys
                 }
             }
 
-            if (isCatch)
+            try
             {
-                _eventTrue?.Invoke();
+                if (isCatch)
+                {
+                    _eventTrue?.Invoke();
+                }
+                else
+                {
+                    _eventFalse?.Invoke();
+                }
             }
-            else
+            catch (Exception e)
             {
-                _eventFalse?.Invoke();
+                Debug.LogError($"{transform.name} - {transform.parent.name} - {e} - {_eventTrue}");
             }
             
         }

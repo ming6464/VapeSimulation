@@ -41,9 +41,11 @@ public static class EventManager
 
     public static Func<int> getSelectedObjectIndex;
     
-    public static Action playGame;
-
     public static Action<Action,Action> loadLayer;
+
+    public static Action goToGamePlayScene;
+    
+    public static Action goToMenuScene;
 
     #region InGame
 

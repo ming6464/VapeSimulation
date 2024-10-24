@@ -11,7 +11,7 @@ namespace _GameAssets._Scripts
         private int       _index;
         private bool      _isResetRotate;
         
-        [Header("----")]
+        [Space(3)]
         public Transform target;
         public SmoothRotationAxisData[] datas;
         private bool _canRotate;

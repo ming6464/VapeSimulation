@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f267822d7f334a57914832ed090526d2, type: 3}
   m_Name: VapeAndPodSO
   m_EditorClassIdentifier: 
-  VapeData: []
+  vapeAndPodContainerPrefab: {fileID: 0}
+  capacity: 0
+  vapeAndPodData: []
+  dripTips: []
+  tanks: []
+  juices: []

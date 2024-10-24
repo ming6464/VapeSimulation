@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using VInspector;
 
+[AddComponentMenu("DOTween Animation Custom/DOTween Scale")]
 public class DOTweenScale : DOTweenAnimationBase
 {
     [SerializeField,Variants("Value","Curve")]
@@ -22,37 +21,35 @@ public class DOTweenScale : DOTweenAnimationBase
     private float     _timeCurve;
     private Coroutine _coroutine;
 
-    private void Awake()
+    protected override void SetupAwake()
     {
+        base.SetupAwake();
         _targetTf = _target.transform;
     }
-    
 
-    public void PlayForward()
+
+    public override void PlayForward()
     {
-        if(!_targetTf) return;
-
+        if(!_hasTarget) return;
+        
+        KillCurrentTween();
         if (_scaleType.Equals("Value"))
         {
             if(_targetTf.localScale.Equals(_to)) return;
             _targetTf.localScale = _from;
-            _targetTf.DOScale(_to, _duration).SetDelay(_delay).SetEase(_easeType).SetUpdate(_ignoreTimeScale);
+            _currentTween = _targetTf.DOScale(_to, _duration).SetDelay(_delay).SetEase(_easeType).SetUpdate(_ignoreTimeScale);
         }
         else
         {
-            if (_coroutine != null)
-            {
-                StopCoroutine(_coroutine);
-            }
             _timeCurve = 0;
             _coroutine = StartCoroutine(PlayForwardEnumerator());
         }
     }
     
-    public void PlayBackward()
+    public override void PlayBackward()
     {
-        if(!_targetTf) return;
-
+        if(!_hasTarget) return;
+        KillCurrentTween();
         if (_scaleType.Equals("Value"))
         {
             if(_targetTf.localScale.Equals(_from)) return;
@@ -61,12 +58,33 @@ public class DOTweenScale : DOTweenAnimationBase
         }
         else
         {
-            if (_coroutine != null)
-            {
-                StopCoroutine(_coroutine);
-            }
             _timeCurve = 1;
             _coroutine = StartCoroutine(PlayBackwardEnumerator());
+        }
+    }
+
+    protected override void KillCurrentTween()
+    {
+        base.KillCurrentTween();
+        if (_coroutine != null)
+        {
+            StopCoroutine(_coroutine);
+            _coroutine = null;
+        }
+    }
+
+    public override void Rewind()
+    {
+        if(!_hasTarget) return;
+        KillCurrentTween();
+        if (_scaleType.Equals("Value"))
+        {
+            _targetTf.localScale = _from;
+        }
+        else
+        {
+            _timeCurve = 0;
+            _targetTf.localScale = _curve.Evaluate(_timeCurve) * Vector3.one;
         }
     }
 

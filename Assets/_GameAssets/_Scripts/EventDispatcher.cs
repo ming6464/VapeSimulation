@@ -188,7 +188,9 @@ public enum EventID
     PlaySmokeEffect,
     Reload,
     GoToObjectMenu,
-    GoToTypeObjectMenu
+    GoToTypeObjectMenu,
+    GoToMenuScene,
+    GoToGamePlayScene
 }
 
 #endregion

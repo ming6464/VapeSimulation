@@ -3,32 +3,42 @@ using UnityEngine;
 
 public class ObjectSimulationContainer : MonoBehaviour
 {
-    [SerializeField]
-    private Transform _content;
+    #region Properties
+
     [SerializeField]
     private RenderTexture _renderTexture;
     [SerializeField]
     private Camera _camera;
+    [Space(3)]
+    [SerializeField]
+    private VapeAndPodSimulationContainer _vapeAndPodSimulationContainer;
+    [SerializeField]
+    private GunSimulationContainer _gunSimulationContainer;
+    [SerializeField]
+    private LightSaberSimulationContainer _lightSaberSimulationContainer;
     
-    private ObjectSimulationType _objectSimulationType;
-    private int _selectedObjectIndex;
-
-    private void OnEnable()
-    {
-        EventManager.changeObjectSimulation += changeObjectSimulation;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.changeObjectSimulation -= changeObjectSimulation;
-    }
-
+    #endregion
+    
+    
     private void Start()
     {
-        _objectSimulationType = EventManager.getSelectedObjectType();
-        _selectedObjectIndex = EventManager.getSelectedObjectIndex();
-        ChangeObjectSimulation();
+        var objectType = EventManager.getSelectedObjectType();
         UpdateRenderTextureSize();
+        switch (objectType)
+        {
+            case ObjectSimulationType.VapeAndPod:
+                _vapeAndPodSimulationContainer.enabled = true;
+                break;
+            case ObjectSimulationType.MachineGun:
+                _gunSimulationContainer.enabled = true;
+                break;
+            case ObjectSimulationType.ScifiGun: 
+                _gunSimulationContainer.enabled = true;
+                break;
+            case ObjectSimulationType.LightSaber: 
+                _lightSaberSimulationContainer.enabled = true;
+                break;
+        }
     }
     
     private void UpdateRenderTextureSize()
@@ -46,61 +56,4 @@ public class ObjectSimulationContainer : MonoBehaviour
         _camera.targetTexture = _renderTexture;
     }
     
-    private void changeObjectSimulation()
-    {
-        var index = EventManager.getSelectedObjectIndex();
-        if(_selectedObjectIndex == index) return;
-        _selectedObjectIndex = index;
-        ChangeObjectSimulation();
-    }
-
-    private void ChangeObjectSimulation()
-    {
-        foreach(Transform child in _content)
-        {
-            DestroyImmediate(child.gameObject);
-        }
-        if(!DataGame.Instance) return;
-
-        GameObject prefab = null;
-        
-        switch (_objectSimulationType)
-        {
-            case ObjectSimulationType.ScifiGun:
-                prefab = DataGame.Instance.GetScifiData(_selectedObjectIndex)?.prefab;
-                break;
-            case ObjectSimulationType.MachineGun: 
-                prefab = DataGame.Instance.GetMachineData(_selectedObjectIndex)?.prefab;
-                break;
-            case ObjectSimulationType.VapeAndPod:
-                prefab = DataGame.Instance.GetVapeData(_selectedObjectIndex)?.prefab;
-                break;
-            case ObjectSimulationType.LightSaber: 
-                prefab = DataGame.Instance.GetLightSaberData(_selectedObjectIndex)?.prefab;
-                break;
-        }
-
-        if (prefab)
-        {
-            ChangeObjectSimulation(prefab);
-        }
-        
-        ResetState();
-    }
-
-    private void ResetState()
-    {
-        _content.localPosition = Vector3.zero;
-        _content.localRotation = Quaternion.identity;
-        EventDispatcher.Instance.PostEvent(EventID.DefaultMode);
-        EventDispatcher.Instance.PostEvent(EventID.ChangeMode,0);
-    }
-
-    private void ChangeObjectSimulation(GameObject prefab)
-    {
-        var objNew = Instantiate(prefab, _content);
-        objNew.transform.localPosition = Vector3.zero;
-        objNew.transform.localRotation = Quaternion.identity;
-        objNew.transform.localScale = Vector3.one;
-    }
 }

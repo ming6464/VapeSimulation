@@ -6,6 +6,6 @@ public class CardItemObjectMenu : CardBase
     public override void OnClick()
     {
         EventManager.selectedObjectIndex?.Invoke(_cardID);
-        EventManager.playGame?.Invoke();
+        EventManager.goToGamePlayScene?.Invoke();
     }
 }

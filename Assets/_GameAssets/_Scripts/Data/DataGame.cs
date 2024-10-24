@@ -4,7 +4,15 @@ using UnityEngine;
 public class DataGame : Singleton<DataGame>
 {
     #region Properties
+    //Vape And Pod {
     public VapeAndPodData[]       VapeAndPodData       { get; private set;}
+    public Tank[]          Tanks           { get; private set;}
+    public Juice[]         Juices          { get; private set;}
+    public DripTip[]       DripTips        { get; private set;}
+
+    
+    //Vape And Pod }
+    
     public MachineData[]    MachineData   { get; private set;}
     public ScifiData[]      ScifiData      { get; private set;}
     public LightSaberData[] LightSaberData { get; private set;}
@@ -24,7 +32,12 @@ public class DataGame : Singleton<DataGame>
         base.Awake();
         _hasData = _objectSimulationDataSO != null;
         if (!_hasData) return;
+        //Vape And Pod {
         VapeAndPodData = _objectSimulationDataSO.vapeAndPodSo.vapeAndPodData;
+        Tanks          = _objectSimulationDataSO.vapeAndPodSo.tanks;
+        Juices         = _objectSimulationDataSO.vapeAndPodSo.juices;
+        DripTips       = _objectSimulationDataSO.vapeAndPodSo.dripTips;
+        //Vape And Pod }
         MachineData    = _objectSimulationDataSO.machineGunSO.machineData;
         ScifiData      = _objectSimulationDataSO.scifiGunSO.scifiData;
         LightSaberData = _objectSimulationDataSO.lightSaberSO.lightSaberData;
@@ -35,11 +48,32 @@ public class DataGame : Singleton<DataGame>
 
     #region Public Func
 
+    //Vape And Pod {
     public VapeAndPodData GetVapeData(int index)
     {
         if (!_hasData) return default;
         return VapeAndPodData[index];
     }
+    
+    public Tank GetTank(int index)
+    {
+        if (!_hasData) return default;
+        return Tanks[index];
+    }
+    
+    public Juice GetJuice(int index)
+    {
+        if (!_hasData) return default;
+        return Juices[index];
+    }
+    
+    public DripTip GetDripTip(int index)
+    {
+        if (!_hasData) return default;
+        return DripTips[index];
+    }
+    
+    //Vape And Pod }
     
     public MachineData GetMachineData(int index)
     {
