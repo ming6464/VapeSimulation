@@ -8,6 +8,9 @@ public class VapeAndPodSO : ScriptableObject
     public DripTip[]        dripTips;
     public Tank[]           tanks;
     public Juice[]          juices;
+
+    [Header("--")]
+    public Color juiceDefault;
 }
 
 [Serializable]
@@ -26,16 +29,14 @@ public struct DripTip
 
 //Buồng chứa tinh dầu
 [Serializable]
-public struct Tank
+public class Tank : ObjectDataBase
 {
-    public Sprite     icon;
     public GameObject prefab;
 }
 
 //Tinh dầu
 [Serializable]
-public struct Juice
+public class Juice : ObjectDataBase
 {
-    public Sprite icon;
     public Color color;
 }

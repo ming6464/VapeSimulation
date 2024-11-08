@@ -86,8 +86,8 @@ GameObject:
   - component: {fileID: 6375721237627577155}
   - component: {fileID: 6761633805676042753}
   - component: {fileID: 2344445593402811697}
-  - component: {fileID: 3072479826948114538}
   - component: {fileID: 4513734300199144349}
+  - component: {fileID: 3589758282104176944}
   m_Layer: 5
   m_Name: CardItemBackground
   m_TagString: Untagged
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3072479826948114538}
-        m_TargetAssemblyTypeName: ComponentUtilitys.CardBackgroundInGame, Assembly-CSharp
+      - m_Target: {fileID: 3589758282104176944}
+        m_TargetAssemblyTypeName: CardInGame, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -193,19 +193,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3072479826948114538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6606975833320170495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17c8c6a06d0b4f0396445f5ec95f9d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardImage: {fileID: 4361577392037286037}
 --- !u!114 &4513734300199144349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bc5c3c05724bbd98e89002269c9602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onEnable: 1
+  _onDisable: 3
+  _onStart: 4
   _target: {fileID: 6606975833320170495}
   _duration: 0.1
   _delay: 0
@@ -259,6 +249,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3589758282104176944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6606975833320170495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c08e25976b24c24bd3a1155916a9185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardImage: {fileID: 4361577392037286037}
 --- !u!1 &6869259214142136277
 GameObject:
   m_ObjectHideFlags: 0

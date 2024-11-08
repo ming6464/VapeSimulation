@@ -1,17 +1,15 @@
 using _GameAssets._Scripts;
-using ComponentUtilitys;
 using UnityEngine;
-using VInspector;
 
 public class CardListInGame : MonoBehaviour
 {
-    [Variants("Object Simulation","Background")]
-    public string type;
+    [SerializeField]
+    private TargetInGame _type;
     [Space(10)]
     [SerializeField]
     private Transform _content;
     [SerializeField]
-    private CardBase _cardPrefab;
+    private CardInGame _cardPrefab;
     
     private void Start()
     {
@@ -30,31 +28,45 @@ public class CardListInGame : MonoBehaviour
             return null;
         }
         ObjectDataBase[] objectDataBases = null;
-        
-        if(type.Equals("Background"))
+
+        switch (_type)
         {
-            objectDataBases = DataGame.Instance.BackgroundData;
-        }
-        else
-        {
-            switch (GameState.Instance.objectSimulationType)
-            {
-                case ObjectSimulationType.VapeAndPod:
-                    objectDataBases = DataGame.Instance.VapeAndPodData;
-                    break;
-                case ObjectSimulationType.ScifiGun:
-                    objectDataBases = DataGame.Instance.ScifiData;
-                    break;
-                case ObjectSimulationType.LightSaber:
-                    objectDataBases = DataGame.Instance.LightSaberData;
-                    break;
-                default:
-                    objectDataBases = DataGame.Instance.MachineData;
-                    break;
-            }
+            case TargetInGame.Background:
+                objectDataBases = DataGame.Instance.BackgroundData;
+                break;
+            case TargetInGame.ObjectSimulation:
+                objectDataBases = GetObjectSimulationData();
+                break;
+            case TargetInGame.Tank:
+                objectDataBases = DataGame.Instance.Tanks;
+                break;
+            case TargetInGame.Juice: 
+                objectDataBases = DataGame.Instance.Juices;
+                break;
+            
         }
         
-        
+        return objectDataBases;
+    }
+
+    private ObjectDataBase[] GetObjectSimulationData()
+    {
+        ObjectDataBase[] objectDataBases = null;
+        switch (GameState.Instance.objectSimulationType)
+        {
+            case ObjectSimulationType.VapeAndPod:
+                objectDataBases = DataGame.Instance.VapeAndPodData;
+                break;
+            case ObjectSimulationType.ScifiGun:
+                objectDataBases = DataGame.Instance.ScifiData;
+                break;
+            case ObjectSimulationType.LightSaber:
+                objectDataBases = DataGame.Instance.LightSaberData;
+                break;
+            default:
+                objectDataBases = DataGame.Instance.MachineData;
+                break;
+        }
 
         return objectDataBases;
     }
@@ -64,6 +76,7 @@ public class CardListInGame : MonoBehaviour
         for(var i = 0; i < objectDataBases.Length; i++)
         {
             var card = Instantiate(_cardPrefab, _content);
+            card.SetTargetType(_type);
             card.SetUp(i, objectDataBases[i].icon);
         }
     }

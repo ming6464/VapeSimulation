@@ -1,4 +1,5 @@
 using ComponentUtilitys;
+using UnityHelper;
 
 public class ImageInGame : ResizeBackgroundImage
 {

@@ -9,6 +9,8 @@ public class DataGame : Singleton<DataGame>
     public Tank[]          Tanks           { get; private set;}
     public Juice[]         Juices          { get; private set;}
     public DripTip[]       DripTips        { get; private set;}
+    
+    public Color JuiceDefaultColor { get; private set; }
 
     
     //Vape And Pod }
@@ -37,6 +39,7 @@ public class DataGame : Singleton<DataGame>
         Tanks          = _objectSimulationDataSO.vapeAndPodSo.tanks;
         Juices         = _objectSimulationDataSO.vapeAndPodSo.juices;
         DripTips       = _objectSimulationDataSO.vapeAndPodSo.dripTips;
+        JuiceDefaultColor = _objectSimulationDataSO.vapeAndPodSo.juiceDefault;
         //Vape And Pod }
         MachineData    = _objectSimulationDataSO.machineGunSO.machineData;
         ScifiData      = _objectSimulationDataSO.scifiGunSO.scifiData;

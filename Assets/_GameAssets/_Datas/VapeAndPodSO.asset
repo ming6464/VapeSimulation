@@ -12,9 +12,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f267822d7f334a57914832ed090526d2, type: 3}
   m_Name: VapeAndPodSO
   m_EditorClassIdentifier: 
-  vapeAndPodContainerPrefab: {fileID: 0}
-  capacity: 0
-  vapeAndPodData: []
-  dripTips: []
-  tanks: []
-  juices: []
+  vapeAndPodData:
+  - icon: {fileID: 21300000, guid: f47f5e254fbb68b49bad62008cf739f2, type: 2}
+    prefab: {fileID: 2420874014814377666, guid: 5d3dc5668a0c0e744adbd45ea6ee95d4,
+      type: 3}
+    defaultTank: 0
+  - icon: {fileID: 21300000, guid: a0d2c65d04eba334194038e906894d95, type: 2}
+    prefab: {fileID: 4157476148613645496, guid: daab4d326e4ec2044b129bb61c6c834b,
+      type: 3}
+    defaultTank: 1
+  - icon: {fileID: 21300000, guid: e93632286b179ea4080793bb2e506831, type: 2}
+    prefab: {fileID: 1521310531689073123, guid: 60479eb2670af4d478f0fbdef0ef44d1,
+      type: 3}
+    defaultTank: 2
+  - icon: {fileID: 21300000, guid: c74d9676cfb6df0488c73bbc074c3530, type: 2}
+    prefab: {fileID: 8789418796935007234, guid: 63c8d84aaee992643a3aa09a78b68184,
+      type: 3}
+    defaultTank: 3
+  - icon: {fileID: 21300000, guid: fa23b8ebe02bd474b92059c6e39d1c7a, type: 2}
+    prefab: {fileID: 4879630179653517883, guid: 2cac639dc28dafc41aee575910c824c7,
+      type: 3}
+    defaultTank: 4
+  - icon: {fileID: 21300000, guid: c6af3103a1d20be468d83a34b01ce952, type: 2}
+    prefab: {fileID: 8527445151259778836, guid: 092db43ef691208478fd95c650c596a7,
+      type: 3}
+    defaultTank: 4
+  dripTips:
+  - prefab: {fileID: 7298662174862484648, guid: 123ac24ba4dc9474781113f418885791,
+      type: 3}
+  - prefab: {fileID: 1673141431282782018, guid: d797c74e781c6da4987870942177853b,
+      type: 3}
+  - prefab: {fileID: 7245151652944332287, guid: ce70e3af878303b41a0d149f12cbbc0e,
+      type: 3}
+  - prefab: {fileID: 9135480411157240785, guid: 87c14351b9efc48428278977c7709bac,
+      type: 3}
+  - prefab: {fileID: 7383563940638753958, guid: f2e7dad47cc466a428ac21f40d059e9e,
+      type: 3}
+  tanks:
+  - icon: {fileID: 21300000, guid: bfa2cff0c6d9c7a408e1e5358e6847ef, type: 2}
+    prefab: {fileID: 2081473334080248180, guid: 70f57230a550fa24fa39e68d2a9fd1ba,
+      type: 3}
+  - icon: {fileID: 21300000, guid: 37984fa56d724fc46b52a5a759374047, type: 2}
+    prefab: {fileID: 2525365371390277022, guid: 8a23560b7c6812f4a8185485128c864d,
+      type: 3}
+  - icon: {fileID: 21300000, guid: 84f54f1a45084d042901454d1c0f38da, type: 2}
+    prefab: {fileID: 3419540900483871741, guid: f1c6db939dbc68f438ba2239f1e249dd,
+      type: 3}
+  - icon: {fileID: 21300000, guid: 6b5b93763e2caf54688f94b7e7605729, type: 2}
+    prefab: {fileID: 201863020296136206, guid: 0b3893c9e49922e4693d9cb6fecd9b26, type: 3}
+  - icon: {fileID: 21300000, guid: fcc5c83ea6badc74fabefec13a98e551, type: 2}
+    prefab: {fileID: 7081004087540092259, guid: 6279fc44c211029469622d1625c501b1,
+      type: 3}
+  juices:
+  - icon: {fileID: 21300000, guid: 83e62c7a07ae9f441837a6e52ef80561, type: 2}
+    color: {r: 0.12765832, g: 1, b: 0.09803921, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: a78bfbd302a4c6f48b7f7194484468fc, type: 2}
+    color: {r: 0.7453266, g: 1, b: 0.09803921, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 2521a6cf788f2d6479800cfb603bc7e7, type: 2}
+    color: {r: 0.51538026, g: 0.09803921, b: 1, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 5c5b340ef4a4b49459bd7747405097e7, type: 2}
+    color: {r: 0.9547169, g: 0.027020127, b: 0.8202916, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 133722f9bdea15546b52be99f327a1c8, type: 2}
+    color: {r: 1, g: 0.16295399, b: 0.09803921, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: f74603ef5e80c9d48be7002384fc3358, type: 2}
+    color: {r: 0.50980395, g: 0.5882353, b: 0.9568628, a: 0.5882353}
+  - icon: {fileID: 21300000, guid: 90bf34e55da1f9b4d92b3d8e79a7bb14, type: 2}
+    color: {r: 0.909804, g: 0.49803925, b: 0.4431373, a: 0.5882353}
+  juiceDefault: {r: 1, g: 1, b: 1, a: 0.5882353}

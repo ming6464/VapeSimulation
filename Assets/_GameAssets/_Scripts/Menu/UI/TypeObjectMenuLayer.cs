@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
-using ComponentUtilitys;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityHelper;
 
 public class TypeObjectMenuLayer : LayerBase
 {

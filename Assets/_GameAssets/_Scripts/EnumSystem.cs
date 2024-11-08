@@ -1,14 +1,6 @@
 using System;
 
-[Serializable]
-public enum PrimitiveDataType
-{
-    Int,
-    Float,
-    String,
-    Bool,
-    None
-}
+
 
 [Serializable]
 public enum Axis
@@ -26,3 +18,16 @@ public enum ObjectSimulationType
     ScifiGun,
     LightSaber,
 }
+
+#region InGame
+
+[Serializable]
+public enum TargetInGame
+{
+    Background,
+    ObjectSimulation,
+    Tank,
+    Juice
+}
+
+#endregion

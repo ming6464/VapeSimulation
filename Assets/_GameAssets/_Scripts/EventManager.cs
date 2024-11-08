@@ -1,4 +1,5 @@
 using System;
+using _GameAssets._Scripts;
 using UnityEngine;
 
 public static class EventManager
@@ -29,7 +30,6 @@ public static class EventManager
     /// </summary>
     public static Action<Vector2, Vector2, Vector2> onDrag;
 
-    public static Action<int, ObjectSimulationType> selectedObject;
 
     public static Action<ObjectSimulationType> selectedObjectType;
 
@@ -50,6 +50,18 @@ public static class EventManager
     #region InGame
 
     public static Action<int> selectedBackgroundInGame;
+
+    #endregion
+
+    #region VapeAndPod
+
+    public static Action<int> selectedTankIndex;
+    public static Action      changeTank;
+    public static Func<int>   getSelectedTankIndex;
+    
+    public static Action<int> selectedJuiceIndex;
+    public static Action      changeJuice;
+    public static Func<int>   getSelectedJuiceIndex;
 
     #endregion
     
